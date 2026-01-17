@@ -88,12 +88,9 @@ body{
 .ghost:hover{background:rgba(255,255,255,.07)}
 
 /* ---------- Mobile menu (clean tech modal) ---------- */
-
-/* old dropdown menu panel is not used anymore */
 .menuPanel{display:none; padding:0; border-top:0;}
-
-/* hamburger button (your HTML button has class="menuBtn hamburger") */
 .menuBtn{display:none} /* will show only on mobile */
+
 .hamburger{
   display:none;
   width:46px;
@@ -118,7 +115,7 @@ body{
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* FULLSCREEN overlay panel (hard override + clean look) */
+/* FULLSCREEN overlay panel */
 #mobileMenu.techMenu{
   position: fixed;
   top: 0;
@@ -126,36 +123,26 @@ body{
   width: 100vw;
   height: 100vh;
   z-index: 99999;
-
-  display: none;               /* closed */
+  display: none;
   padding: 18px;
-
-  background: rgba(3,7,12,.78); /* softer = cleaner */
+  background: rgba(3,7,12,.78);
   backdrop-filter: blur(14px);
 }
-
-/* open state */
 #mobileMenu.techMenu[data-open="true"]{
   display: grid;
   place-items: center;
 }
-
-/* inner modal */
 #mobileMenu.techMenu .techMenuInner{
   width: min(520px, 92vw);
   max-height: calc(100vh - 110px);
   overflow: auto;
-
   border-radius: 20px;
   padding: 20px;
   margin: 0;
-
   background: linear-gradient(180deg, rgba(10,20,35,.92), rgba(2,6,12,.92));
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: 0 24px 90px rgba(0,0,0,.62);
 }
-
-/* top row */
 #mobileMenu.techMenu .techMenuTop{
   display:flex;
   align-items:center;
@@ -174,8 +161,6 @@ body{
   font-size:18px;
   cursor:pointer;
 }
-
-/* links */
 #mobileMenu.techMenu .techLinks{
   display:flex;
   flex-direction:column;
@@ -189,7 +174,6 @@ body{
   text-decoration:none;
   color:#e6f1ff;
   font-weight:650;
-
   background:rgba(255,255,255,0.045);
   border:1px solid rgba(255,255,255,0.09);
 }
@@ -197,8 +181,6 @@ body{
   border-color: rgba(0,255,204,0.22);
   box-shadow: none;
 }
-
-/* menu CTAs */
 #mobileMenu.techMenu .techMenuCtas{
   display:grid;
   gap:10px;
@@ -213,23 +195,17 @@ body{
   padding:12px 14px;
   border-radius:14px;
 }
-
-/* helper text */
 #mobileMenu.techMenu .techHint{
   margin: 12px 0 0;
   color: rgba(230,241,255,.72);
   font-size: 12px;
   text-align: center;
 }
-
-/* remove double-close look: hide the header hamburger when menu open */
 body.menuOpen #hamburgerBtn{
   opacity:0;
   pointer-events:none;
   transform:scale(.96);
 }
-
-/* prevent scrolling behind menu */
 body.menuOpen{ overflow:hidden; }
 
 /* Hero */
@@ -318,16 +294,25 @@ body.menuOpen{ overflow:hidden; }
 /* Portfolio */
 .workGrid{grid-template-columns:repeat(3, 1fr);}
 .work{ position:relative; overflow:hidden; }
+
+/* ✅ FIX: mock box now supports images properly */
 .mock{
+  width:100%;
   height:150px;
   border-radius:16px;
+  overflow:hidden; /* keeps image in rounded box */
   border:1px solid rgba(255,255,255,.12);
-  background:
-    radial-gradient(380px 140px at 20% 20%, rgba(0,194,255,.25), transparent 60%),
-    radial-gradient(380px 140px at 80% 80%, rgba(124,255,58,.18), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  background:rgba(255,255,255,.03); /* fallback if image fails */
   margin-bottom:14px;
+  display:block;
 }
+.mock img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* change to contain if you don’t want cropping */
+  display:block;
+}
+
 .work small{color:var(--muted); font-weight:700}
 .work a{color:var(--text)}
 .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
@@ -389,27 +374,21 @@ input:focus, select:focus, textarea:focus{
 @media (max-width: 760px){
   .navlinks{display:none}
   .menuBtn{display:inline-flex}
+  .hamburger{display:inline-flex}
   .h1{font-size:40px}
 }
-
 
 /* Keep page from scrolling behind menu */
 body.menuOpen { overflow: hidden !important; }
 
 /* ===== Make header logo larger & more prominent ===== */
-
-/* Desktop + mobile */
 .brand img{
-  height: 54px;              /* was ~42px */
+  height: 54px;
   width: auto;
 }
-
-/* Give the header a little more breathing room */
 .nav{
-  padding: 18px 0;           /* was 14px */
+  padding: 18px 0;
 }
-
-/* Mobile tweak so it doesn't feel cramped */
 @media (max-width: 760px){
   .brand img{
     height: 48px;
@@ -423,22 +402,19 @@ body.menuOpen { overflow: hidden !important; }
   position: fixed;
   inset: 0;
   z-index: 99999;
-  display: none; /* hidden by default */
+  display: none;
   place-items: center;
   padding: 18px;
 }
-
 .promoModal.is-open{
   display: grid;
 }
-
 .promoModal__overlay{
   position: absolute;
   inset: 0;
   background: rgba(3, 7, 12, 0.78);
   backdrop-filter: blur(10px);
 }
-
 .promoModal__card{
   position: relative;
   width: min(640px, 92vw);
@@ -450,7 +426,6 @@ body.menuOpen { overflow: hidden !important; }
   overflow: hidden;
   animation: promoPop .22s ease-out;
 }
-
 .promoModal__card::before{
   content:"";
   position:absolute;
@@ -461,7 +436,6 @@ body.menuOpen { overflow: hidden !important; }
   opacity:.85;
   pointer-events:none;
 }
-
 .promoModal__close{
   position: absolute;
   top: 14px;
@@ -475,7 +449,6 @@ body.menuOpen { overflow: hidden !important; }
   cursor: pointer;
   z-index: 2;
 }
-
 .promoModal__badge{
   position: relative;
   display: inline-flex;
@@ -491,21 +464,18 @@ body.menuOpen { overflow: hidden !important; }
   font-size: 12px;
   margin-bottom: 12px;
 }
-
 .promoModal__title{
   position: relative;
   margin: 0 0 10px;
   font-size: 28px;
   line-height: 1.1;
 }
-
 .promoModal__text{
   position: relative;
   margin: 0 0 16px;
   color: var(--muted);
   line-height: 1.75;
 }
-
 .promoModal__actions{
   position: relative;
   display: flex;
@@ -513,12 +483,10 @@ body.menuOpen { overflow: hidden !important; }
   flex-wrap: wrap;
   margin-top: 8px;
 }
-
 .promoModal__cta,
 .promoModal__ghost{
   width: auto;
 }
-
 .promoModal__fineprint{
   position: relative;
   margin: 14px 0 0;
@@ -526,14 +494,11 @@ body.menuOpen { overflow: hidden !important; }
   color: rgba(233,240,255,.65);
   line-height: 1.5;
 }
-
 @keyframes promoPop{
   from { transform: translateY(10px) scale(.98); opacity: 0; }
   to   { transform: translateY(0) scale(1); opacity: 1; }
 }
-
 @media (max-width: 520px){
   .promoModal__title{ font-size: 24px; }
   .promoModal__actions a{ width: 100%; justify-content: center; }
 }
-
