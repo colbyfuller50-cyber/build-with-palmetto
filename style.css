@@ -395,3 +395,23 @@ input:focus, select:focus, textarea:focus{
 
 /* Keep page from scrolling behind menu */
 body.menuOpen { overflow: hidden !important; }
+
+/* ===== Make header logo larger & more prominent ===== */
+
+/* Desktop + mobile */
+.brand img{
+  height: 54px;              /* was ~42px */
+  width: auto;
+}
+
+/* Give the header a little more breathing room */
+.nav{
+  padding: 18px 0;           /* was 14px */
+}
+
+/* Mobile tweak so it doesn't feel cramped */
+@media (max-width: 760px){
+  .brand img{
+    height: 48px;
+  }
+}
