@@ -416,51 +416,124 @@ body.menuOpen { overflow: hidden !important; }
   }
 }
 
-/* 🔥 Promo Banner (FIXED – does NOT scroll) */
-.promoBanner {
-  position: fixed;              /* ✅ stays on screen */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10000;
-
-  background: linear-gradient(90deg, #00d4ff, #7CFF5B);
-  color: #001018;
-  font-size: 14px;
+/* ============================
+   PROMO MODAL (Modern Pop-up)
+============================ */
+.promoModal{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none; /* hidden by default */
+  place-items: center;
+  padding: 18px;
 }
 
-/* Inner layout */
-.promoInner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 16px;
-  display: flex;
+.promoModal.is-open{
+  display: grid;
+}
+
+.promoModal__overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 12, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.promoModal__card{
+  position: relative;
+  width: min(640px, 92vw);
+  border-radius: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(180deg, rgba(15,26,47,.92), rgba(7,11,20,.92));
+  box-shadow: 0 30px 120px rgba(0,0,0,.65);
+  overflow: hidden;
+  animation: promoPop .22s ease-out;
+}
+
+.promoModal__card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(520px 240px at 15% 10%, rgba(0,194,255,.22), transparent 60%),
+    radial-gradient(520px 240px at 85% 40%, rgba(124,255,58,.16), transparent 60%);
+  opacity:.85;
+  pointer-events:none;
+}
+
+.promoModal__close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.promoModal__badge{
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-/* Text */
-.promoText {
-  font-weight: 600;
-}
-
-/* CTA button */
-.promoBtn {
-  background: #001018;
-  color: #ffffff;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 8px 12px;
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
+  border: 1px solid rgba(0,194,255,.24);
+  background: rgba(0,194,255,.08);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
-/* Mobile */
-@media (max-width: 700px) {
-  .promoInner {
-    flex-direction: column;
-    text-align: center;
-  }
+.promoModal__title{
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.1;
 }
+
+.promoModal__text{
+  position: relative;
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.promoModal__actions{
+  position: relative;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.promoModal__cta,
+.promoModal__ghost{
+  width: auto;
+}
+
+.promoModal__fineprint{
+  position: relative;
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: rgba(233,240,255,.65);
+  line-height: 1.5;
+}
+
+@keyframes promoPop{
+  from { transform: translateY(10px) scale(.98); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (max-width: 520px){
+  .promoModal__title{ font-size: 24px; }
+  .promoModal__actions a{ width: 100%; justify-content: center; }
+}
+
