@@ -9,15 +9,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🔥 PROMO BANNER -->
-<div class="promoBanner">
-  <div class="promoInner">
-    <span class="promoText">
-      🎉 <strong>Limited-Time Offer:</strong> Get <strong>50% OFF Logo Design</strong> when you request a consultation for a new website.
-    </span>
-    <a href="consultation.html" class="promoBtn">Request a Consultation</a>
+  <!-- Promo Modal -->
+<div class="promoModal" id="promoModal" aria-hidden="true">
+  <div class="promoModal__overlay" data-promo-close></div>
+
+  <div class="promoModal__card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+    <button class="promoModal__close" type="button" aria-label="Close" data-promo-close>✕</button>
+
+    <div class="promoModal__badge">Limited-time offer</div>
+    <h2 class="promoModal__title" id="promoTitle">Get 50% off your logo</h2>
+    <p class="promoModal__text">
+      Request a consultation today and receive <strong>50% off logo design</strong> with the purchase of a new website build.
+      Perfect for service-based businesses ready to look premium online.
+    </p>
+
+    <div class="promoModal__actions">
+      <a class="cta promoModal__cta" href="consultation.html">Request a Consultation</a>
+      <a class="ghost promoModal__ghost" href="services.html">View Services</a>
+    </div>
+
+    <p class="promoModal__fineprint">
+      *Offer applies to logo design when bundled with a new website build. Limited availability.
+    </p>
   </div>
 </div>
+
 
   <header class="topbar">
   <div class="container">
@@ -229,5 +245,41 @@
 
   <script src="main.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script>
+  // ===== Promo Modal =====
+  (function () {
+    const modal = document.getElementById("promoModal");
+    if (!modal) return;
+
+    const storageKey = "bwp_promo_closed_v1";
+
+    // Show modal only if user hasn't closed it before
+    const alreadyClosed = localStorage.getItem(storageKey) === "true";
+    if (!alreadyClosed) {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menuOpen"); // prevents scroll (reuses your existing rule)
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menuOpen");
+      localStorage.setItem(storageKey, "true");
+    }
+
+    // Close on X button or overlay click
+    modal.querySelectorAll("[data-promo-close]").forEach(el => {
+      el.addEventListener("click", closeModal);
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+  })();
+</script>
+
 </body>
 </html>
