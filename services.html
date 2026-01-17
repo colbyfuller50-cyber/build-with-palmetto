@@ -1,138 +1,143 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Palmetto Digital — modern websites, logo design, and branding systems." />
-  <title>Services • Palmetto Digital</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | Build with Palmetto</title>
+  <meta name="description" content="Websites, logos, and branding for service-based businesses." />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
 
-<header class="header">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="index.html" aria-label="Palmetto Digital home">
-        <img src="assets/palmetto-digital-logo.png" alt="Palmetto Digital logo" />
-        <div class="name">
-          <strong>Palmetto Digital</strong>
-          <span>Websites • Logos • Brand Systems</span>
+        <div class="navlinks">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="services.html">Services</a>
+          <a data-nav href="portfolio.html">Portfolio</a>
+          <a data-nav href="consultation.html">Consultation</a>
         </div>
-      </a>
 
-      <button class="mobile-toggle" data-mobile-toggle aria-expanded="false" aria-label="Toggle menu">
-        ☰ Menu
-      </button>
-
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="work.html">Past Work</a>
-        <a href="consultation.html">Request a Consultation</a>
+        <button class="menuBtn" data-menu-btn aria-expanded="false" aria-controls="mobileMenu">Menu</button>
       </nav>
 
-      <div class="cta">
-        <a class="btn ghost" href="work.html">View Work</a>
-        <a class="btn primary" href="consultation.html">Request a Consult</a>
+      <div id="mobileMenu" class="menuPanel" data-menu-panel data-open="false">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="services.html">Services</a>
+        <a data-nav href="portfolio.html">Portfolio</a>
+        <a data-nav href="consultation.html">Consultation</a>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="main">
-  <section class="pagehead">
-    <div class="container">
-      <div class="breadcrumb">Home / Services</div>
-      <h1 class="h1" style="margin:.6rem 0 .4rem;">Services</h1>
-      <p class="lead">Modern website design, logo design, and brand systems — packaged clearly so you can choose fast.</p>
+  <main>
+    <section class="pageHead">
+      <div class="container">
+        <div class="breadcrumb">Build with Palmetto / Services</div>
+        <h1>Services built to help you get clients</h1>
+        <p class="lead">A clean brand + a fast, modern website = more trust, more clicks, more calls.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:26px;">
+      <div class="container">
+        <div class="grid featureGrid">
+          <div class="card">
+            <h3>Website Design & Build</h3>
+            <p>Custom websites designed for service businesses. We focus on clarity, strong call‑to‑actions, and mobile-first layouts.</p>
+            <div class="tags">
+              <span class="tag">Mobile-first</span>
+              <span class="tag">Fast loading</span>
+              <span class="tag">Lead-focused</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Logo & Brand Identity</h3>
+            <p>Logos that look professional and modern—plus brand colors and typography so everything stays consistent.</p>
+            <div class="tags">
+              <span class="tag">Logo design</span>
+              <span class="tag">Color palette</span>
+              <span class="tag">Brand kit</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Website Refresh / Redesign</h3>
+            <p>Already have a website? We can redesign it to look new, modern, and easier for clients to navigate.</p>
+            <div class="tags">
+              <span class="tag">UI refresh</span>
+              <span class="tag">SEO basics</span>
+              <span class="tag">Better conversion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px;">
+          <div class="card">
+            <h3>Our process</h3>
+            <p><strong>1) Consultation</strong> — We learn your goals, service area, and what makes you different.</p>
+            <p style="margin-top:10px;"><strong>2) Design</strong> — We create a clean, modern look that matches your brand.</p>
+            <p style="margin-top:10px;"><strong>3) Build</strong> — We develop a responsive website with clear calls-to-action.</p>
+            <p style="margin-top:10px;"><strong>4) Launch</strong> — We help you publish (GitHub Pages, custom domain, etc.).</p>
+          </div>
+          <div class="card">
+            <h3>Hire us on Thumbtack</h3>
+            <p>We’re also available on Thumbtack if you prefer booking through a marketplace. Or you can request a consultation directly using our form.</p>
+            <div class="heroActions" style="margin-top:16px;">
+              <a class="cta" href="consultation.html">Request a Consultation</a>
+              <a class="ghost" href="portfolio.html">View Portfolio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="band">
+          <div>
+            <h2 style="margin:0 0 6px; font-size:22px;">Not sure what you need?</h2>
+            <p>Tell us your business type and your budget range—we’ll recommend the best option.</p>
+          </div>
+          <a class="cta" href="consultation.html">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerGrid">
+      <div>
+        <a class="brand" href="index.html" style="gap:10px;">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
+        <p style="margin:12px 0 0;">Modern websites and branding built for service-based businesses.</p>
+        <p style="margin:10px 0 0;"><span class="badge">Also on Thumbtack</span></p>
+      </div>
+      <div>
+        <div style="display:flex; gap:18px; flex-wrap:wrap;">
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="consultation.html">Consultation</a>
+        </div>
+        <p style="margin:12px 0 0; font-size:13px;">© <span id="year"></span> Build with Palmetto. All rights reserved.</p>
+      </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid">
-        <div class="card">
-          <div class="icon blue">🧩</div>
-          <h3>Starter Website (1 Page)</h3>
-          <p>Clean landing page with sections (hero, services, testimonials, contact) — perfect to launch quickly.</p>
-          <div class="work-meta">
-            <span class="pill">Mobile-first</span><span class="pill">Fast</span><span class="pill">GitHub-ready</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="icon orange">📄</div>
-          <h3>Business Website (3–5 Pages)</h3>
-          <p>Full multi-page website: Home, Services, Work, and Contact/Consultation. Great for credibility + conversions.</p>
-          <div class="work-meta">
-            <span class="pill">Navigation</span><span class="pill">CTA focused</span><span class="pill">Clean UI</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="icon blue">🎨</div>
-          <h3>Logo Design</h3>
-          <p>Multiple logo concepts + final export pack (PNG/SVG suggestions) so you can use it everywhere.</p>
-          <div class="work-meta">
-            <span class="pill">Primary</span><span class="pill">Alt mark</span><span class="pill">Icon</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="icon orange">🧠</div>
-          <h3>Brand Kit</h3>
-          <p>Color palette, font pairing, logo usage rules, and basic social/banner templates.</p>
-          <div class="work-meta">
-            <span class="pill">Consistency</span><span class="pill">Professional</span><span class="pill">Reusable</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="icon blue">🚀</div>
-          <h3>SEO Setup</h3>
-          <p>Page titles, descriptions, clean headings, and structure to help your site be understood by search engines.</p>
-          <div class="work-meta">
-            <span class="pill">Metadata</span><span class="pill">Structure</span><span class="pill">Best practices</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="icon orange">🛠️</div>
-          <h3>Maintenance & Updates</h3>
-          <p>Optional updates, content swaps, new pages, and improvements after launch.</p>
-          <div class="work-meta">
-            <span class="pill">Monthly</span><span class="pill">As-needed</span><span class="pill">Support</span>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:1.2rem;">
-        <a class="btn primary" href="consultation.html">Request a Consultation</a>
-        <a class="btn" href="work.html" style="margin-left:.5rem;">See Past Work</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="foot">
-      <div class="small">
-        <strong>Palmetto Digital</strong> • Modern websites & logo design
-      </div>
-      <div class="small">
-        © <span id="year"></span> Palmetto Digital. All rights reserved.
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-<script src="js/main.js"></script>
-
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
