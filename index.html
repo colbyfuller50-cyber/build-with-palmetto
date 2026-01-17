@@ -223,26 +223,22 @@
 <script src="main.js"></script>
 
   <script>
-  // ===== Promo Modal =====
+  // ===== Promo Modal (Every Visit, 3s Delay) =====
   (function () {
     const modal = document.getElementById("promoModal");
     if (!modal) return;
 
-    const storageKey = "bwp_promo_closed_v1";
-
-    // Show modal only if user hasn't closed it before
-    const alreadyClosed = localStorage.getItem(storageKey) === "true";
-    if (!alreadyClosed) {
+    // Show modal after 3 seconds
+    setTimeout(() => {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("menuOpen"); // prevents scroll (reuses your existing rule)
-    }
+      document.body.classList.add("menuOpen"); // prevent background scroll
+    }, 3000);
 
     function closeModal() {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("menuOpen");
-      localStorage.setItem(storageKey, "true");
     }
 
     // Close on X button or overlay click
@@ -252,10 +248,13 @@
 
     // Close on Escape
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      if (e.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
     });
   })();
 </script>
+
 
 </body>
 </html>
