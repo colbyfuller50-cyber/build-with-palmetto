@@ -519,3 +519,23 @@ body.menuOpen {
 .hamburger.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
+
+/* ===== FIX MOBILE MENU VERTICAL POSITION ===== */
+.menuPanel.techMenu {
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure inner menu is centered and not pushed up */
+.techMenuInner {
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+/* If you want it SLIGHTLY lower (more premium feel) */
+@media (max-width: 900px) {
+  .techMenuInner {
+    margin-top: 6vh !important; /* adjust between 4–10vh if desired */
+  }
+}
