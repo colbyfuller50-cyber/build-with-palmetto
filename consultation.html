@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultation | Build with Palmetto</title>
+  <meta name="description" content="Request a consultation for your website and branding project." />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
+
+        <div class="navlinks">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="services.html">Services</a>
+          <a data-nav href="portfolio.html">Portfolio</a>
+          <a data-nav href="consultation.html">Consultation</a>
+        </div>
+
+        <button class="menuBtn" data-menu-btn aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      </nav>
+
+      <div id="mobileMenu" class="menuPanel" data-menu-panel data-open="false">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="services.html">Services</a>
+        <a data-nav href="portfolio.html">Portfolio</a>
+        <a data-nav href="consultation.html">Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pageHead">
+      <div class="container">
+        <div class="breadcrumb">Build with Palmetto / Consultation</div>
+        <h1>Request a consultation</h1>
+        <p class="lead">Tell us a bit about your business and what you want to build. We’ll follow up with next steps.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:26px;">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1.05fr .95fr; gap:18px; align-items:start;">
+          <div class="card">
+            <h3 style="margin:0 0 12px;">Consultation Form</h3>
+
+            <!--
+              IMPORTANT:
+              This form is set up to work locally, but to receive submissions you must connect it to a form service.
+              Easiest options:
+              - Formspree: https://formspree.io (replace action URL)
+              - Getform: https://getform.io
+              - Netlify Forms (if hosting on Netlify)
+
+              Replace the action value below with your endpoint.
+            -->
+            <form action="#" method="post" onsubmit="return handleSubmit(event)">
+              <div class="grid formGrid">
+                <div>
+                  <label for="name">Full Name</label>
+                  <input id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+
+              <div class="grid formGrid" style="margin-top:14px;">
+                <div>
+                  <label for="phone">Phone (optional)</label>
+                  <input id="phone" name="phone" placeholder="(555) 555-5555" />
+                </div>
+                <div>
+                  <label for="service">What do you need?</label>
+                  <select id="service" name="service" required>
+                    <option value="">Select one…</option>
+                    <option>New website</option>
+                    <option>Website redesign</option>
+                    <option>Logo / branding</option>
+                    <option>Website + logo bundle</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <label for="business">Business / Brand Name</label>
+                <input id="business" name="business" placeholder="Your business name" required />
+              </div>
+
+              <div style="margin-top:14px;">
+                <label for="details">Project details</label>
+                <textarea id="details" name="details" placeholder="Tell us what you do, what you want the website to accomplish, and any examples you like." required></textarea>
+              </div>
+
+              <div style="margin-top:14px;">
+                <label for="budget">Budget range</label>
+                <select id="budget" name="budget" required>
+                  <option value="">Select one…</option>
+                  <option>$300–$750</option>
+                  <option>$750–$1,500</option>
+                  <option>$1,500–$3,000</option>
+                  <option>$3,000+</option>
+                </select>
+              </div>
+
+              <div class="heroActions" style="margin-top:16px;">
+                <button class="cta" type="submit">Send Request</button>
+                <a class="ghost" href="services.html">View Services</a>
+              </div>
+
+              <p class="help"><strong>Note:</strong> This is a starter template. Connect the form to Formspree (or similar) so submissions go to your email.</p>
+            </form>
+          </div>
+
+          <aside class="card">
+            <h3 style="margin:0 0 8px;">What happens next</h3>
+            <p>After you submit the form, we’ll review your request and reach out with questions, timeline, and pricing options.</p>
+            <div class="hr"></div>
+            <h3 style="margin:0 0 8px;">Also on Thumbtack</h3>
+            <p>If you prefer, you can hire us through Thumbtack as well. Either way, we’ll help you build something modern, clean, and client-ready.</p>
+            <div class="hr"></div>
+            <h3 style="margin:0 0 8px;">What to include</h3>
+            <div class="tags">
+              <span class="tag">Your services</span>
+              <span class="tag">Service area</span>
+              <span class="tag">Example sites</span>
+              <span class="tag">Logos/colors</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerGrid">
+      <div>
+        <a class="brand" href="index.html" style="gap:10px;">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
+        <p style="margin:12px 0 0;">Modern websites and branding built for service-based businesses.</p>
+        <p style="margin:10px 0 0;"><span class="badge">Also on Thumbtack</span></p>
+      </div>
+      <div>
+        <div style="display:flex; gap:18px; flex-wrap:wrap;">
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="consultation.html">Consultation</a>
+        </div>
+        <p style="margin:12px 0 0; font-size:13px;">© <span id="year"></span> Build with Palmetto. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleSubmit(e){
+      e.preventDefault();
+      alert('Form template ready! Connect this form to Formspree/Getform to receive messages.');
+      return false;
+    }
+  </script>
+</body>
+</html>

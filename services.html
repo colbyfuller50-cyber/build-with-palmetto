@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | Build with Palmetto</title>
+  <meta name="description" content="Websites, logos, and branding for service-based businesses." />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
+
+        <div class="navlinks">
+          <a data-nav href="index.html">Home</a>
+          <a data-nav href="services.html">Services</a>
+          <a data-nav href="portfolio.html">Portfolio</a>
+          <a data-nav href="consultation.html">Consultation</a>
+        </div>
+
+        <button class="menuBtn" data-menu-btn aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      </nav>
+
+      <div id="mobileMenu" class="menuPanel" data-menu-panel data-open="false">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="services.html">Services</a>
+        <a data-nav href="portfolio.html">Portfolio</a>
+        <a data-nav href="consultation.html">Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pageHead">
+      <div class="container">
+        <div class="breadcrumb">Build with Palmetto / Services</div>
+        <h1>Services built to help you get clients</h1>
+        <p class="lead">A clean brand + a fast, modern website = more trust, more clicks, more calls.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:26px;">
+      <div class="container">
+        <div class="grid featureGrid">
+          <div class="card">
+            <h3>Website Design & Build</h3>
+            <p>Custom websites designed for service businesses. We focus on clarity, strong call‑to‑actions, and mobile-first layouts.</p>
+            <div class="tags">
+              <span class="tag">Mobile-first</span>
+              <span class="tag">Fast loading</span>
+              <span class="tag">Lead-focused</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Logo & Brand Identity</h3>
+            <p>Logos that look professional and modern—plus brand colors and typography so everything stays consistent.</p>
+            <div class="tags">
+              <span class="tag">Logo design</span>
+              <span class="tag">Color palette</span>
+              <span class="tag">Brand kit</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Website Refresh / Redesign</h3>
+            <p>Already have a website? We can redesign it to look new, modern, and easier for clients to navigate.</p>
+            <div class="tags">
+              <span class="tag">UI refresh</span>
+              <span class="tag">SEO basics</span>
+              <span class="tag">Better conversion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px;">
+          <div class="card">
+            <h3>Our process</h3>
+            <p><strong>1) Consultation</strong> — We learn your goals, service area, and what makes you different.</p>
+            <p style="margin-top:10px;"><strong>2) Design</strong> — We create a clean, modern look that matches your brand.</p>
+            <p style="margin-top:10px;"><strong>3) Build</strong> — We develop a responsive website with clear calls-to-action.</p>
+            <p style="margin-top:10px;"><strong>4) Launch</strong> — We help you publish (GitHub Pages, custom domain, etc.).</p>
+          </div>
+          <div class="card">
+            <h3>Hire us on Thumbtack</h3>
+            <p>We’re also available on Thumbtack if you prefer booking through a marketplace. Or you can request a consultation directly using our form.</p>
+            <div class="heroActions" style="margin-top:16px;">
+              <a class="cta" href="consultation.html">Request a Consultation</a>
+              <a class="ghost" href="portfolio.html">View Portfolio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="band">
+          <div>
+            <h2 style="margin:0 0 6px; font-size:22px;">Not sure what you need?</h2>
+            <p>Tell us your business type and your budget range—we’ll recommend the best option.</p>
+          </div>
+          <a class="cta" href="consultation.html">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerGrid">
+      <div>
+        <a class="brand" href="index.html" style="gap:10px;">
+          <img src="assets/img/logo.png" alt="Build with Palmetto logo" />
+          <div class="title">
+            <strong>Build with Palmetto</strong>
+            <span>Websites • Logos • Branding</span>
+          </div>
+        </a>
+        <p style="margin:12px 0 0;">Modern websites and branding built for service-based businesses.</p>
+        <p style="margin:10px 0 0;"><span class="badge">Also on Thumbtack</span></p>
+      </div>
+      <div>
+        <div style="display:flex; gap:18px; flex-wrap:wrap;">
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="consultation.html">Consultation</a>
+        </div>
+        <p style="margin:12px 0 0; font-size:13px;">© <span id="year"></span> Build with Palmetto. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
