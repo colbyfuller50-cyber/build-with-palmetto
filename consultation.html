@@ -86,21 +86,13 @@
     <section class="section" style="padding-top:26px;">
       <div class="container">
 
-        <!-- ✅ STACKED LAYOUT: Form first, "What happens next" below -->
+        <!-- ✅ STACKED LAYOUT -->
         <div class="grid" style="grid-template-columns: 1fr; gap:18px; align-items:start;">
 
           <!-- FORM CARD -->
           <div class="card">
             <h3 style="margin:0 0 12px;">Consultation Form</h3>
 
-            <!--
-              IMPORTANT:
-              To receive submissions you must connect it to a form service.
-              - Formspree: https://formspree.io (replace action URL)
-              - Getform: https://getform.io
-              - Netlify Forms (if hosting on Netlify)
-              Replace the action value below with your endpoint.
-            -->
             <form action="#" method="post" onsubmit="return handleSubmit(event)">
               <div class="grid formGrid">
                 <div>
@@ -151,15 +143,16 @@
                 </select>
               </div>
 
-              <div class="heroActions" style="margin-top:16px;">
-                <button class="cta" type="submit">Send Request</button>
+              <!-- ✅ CENTERED BUTTON -->
+              <div style="margin-top:16px; display:flex; justify-content:center;">
+                <button class="cta" type="submit" style="min-width: 220px;">Send Request</button>
               </div>
 
               <p class="help"><strong>Note:</strong> This is a starter template. Connect the form to Formspree (or similar) so submissions go to your email.</p>
             </form>
           </div>
 
-          <!-- ✅ "WHAT HAPPENS NEXT" BELOW THE FORM -->
+          <!-- BELOW THE FORM -->
           <aside class="card">
             <h3 style="margin:0 0 8px;">What happens next</h3>
             <p>After you submit the form, we’ll review your request and reach out with questions, timeline, and pricing options.</p>
@@ -168,14 +161,18 @@
 
             <h3 style="margin:0 0 8px;">Also on Thumbtack</h3>
             <p>If you prefer, you can hire us through Thumbtack as well. Either way, we’ll help you build something modern, clean, and client-ready.</p>
-<a
-              class="cta"
-              href="https://www.thumbtack.com/sc/columbia/web-design/palmetto-digital/service/569354673571774467?utm_medium=web&utm_source=txt&surface=sp&referrer_pk=567021525351555082"
-              target="_blank"
-              rel="noopener"
-            >
-              Find Me on Thumbtack
-            </a>
+
+            <!-- ✅ SPACING ABOVE BUTTON -->
+            <div style="margin-top:14px;">
+              <a
+                class="cta"
+                href="https://www.thumbtack.com/sc/columbia/web-design/palmetto-digital/service/569354673571774467?utm_medium=web&utm_source=txt&surface=sp&referrer_pk=567021525351555082"
+                target="_blank"
+                rel="noopener"
+              >
+                Find Me on Thumbtack
+              </a>
+            </div>
           </aside>
 
         </div>
@@ -202,10 +199,8 @@
   </footer>
 
   <script>
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // High-tech hamburger menu toggle
     const btn = document.getElementById('hamburgerBtn');
     const closeBtn = document.getElementById('closeMenuBtn');
     const panel = document.getElementById('mobileMenu');
