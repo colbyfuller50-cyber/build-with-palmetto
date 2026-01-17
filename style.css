@@ -11,8 +11,10 @@
   --radius:18px;
   --max:1160px;
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -73,11 +75,162 @@ body{
 }
 .cta:hover{transform: translateY(-1px);}
 
-/* Mobile menu */
-.menuBtn{display:none; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--text); padding:10px 12px; border-radius:14px; cursor:pointer}
-.menuPanel{display:none; padding:12px 0 18px; border-top:1px solid var(--line)}
-.menuPanel a{display:block; padding:10px 0; color:var(--muted); text-decoration:none; font-weight:700}
-.menuPanel a:hover{color:var(--text)}
+.ghost{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:11px 14px;
+  border-radius:14px;
+  font-weight:800;
+  color:var(--text);
+  text-decoration:none;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+}
+.ghost:hover{background:rgba(255,255,255,.07)}
+
+/* ---------- Mobile menu (clean tech modal) ---------- */
+
+/* old dropdown menu panel is not used anymore */
+.menuPanel{display:none; padding:0; border-top:0;}
+
+/* hamburger button (your HTML button has class="menuBtn hamburger") */
+.menuBtn{display:none} /* will show only on mobile */
+.hamburger{
+  display:none;
+  width:46px;
+  height:46px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex-direction:column;
+}
+.hamburger span{
+  width:22px;
+  height:3px;
+  border-radius:999px;
+  background:#00ffcc;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* FULLSCREEN overlay panel (hard override + clean look) */
+#mobileMenu.techMenu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+
+  display: none;               /* closed */
+  padding: 18px;
+
+  background: rgba(3,7,12,.78); /* softer = cleaner */
+  backdrop-filter: blur(14px);
+}
+
+/* open state */
+#mobileMenu.techMenu[data-open="true"]{
+  display: grid;
+  place-items: center;
+}
+
+/* inner modal */
+#mobileMenu.techMenu .techMenuInner{
+  width: min(520px, 92vw);
+  max-height: calc(100vh - 110px);
+  overflow: auto;
+
+  border-radius: 20px;
+  padding: 20px;
+  margin: 0;
+
+  background: linear-gradient(180deg, rgba(10,20,35,.92), rgba(2,6,12,.92));
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 24px 90px rgba(0,0,0,.62);
+}
+
+/* top row */
+#mobileMenu.techMenu .techMenuTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:14px;
+}
+#mobileMenu.techMenu .techBrand img{height:40px;}
+#mobileMenu.techMenu .techClose{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.05);
+  color:#e6f1ff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* links */
+#mobileMenu.techMenu .techLinks{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin: 8px 0 14px;
+}
+#mobileMenu.techMenu .techLinks a{
+  display:block;
+  padding:12px 14px;
+  border-radius:14px;
+  text-decoration:none;
+  color:#e6f1ff;
+  font-weight:650;
+
+  background:rgba(255,255,255,0.045);
+  border:1px solid rgba(255,255,255,0.09);
+}
+#mobileMenu.techMenu .techLinks a:hover{
+  border-color: rgba(0,255,204,0.22);
+  box-shadow: none;
+}
+
+/* menu CTAs */
+#mobileMenu.techMenu .techMenuCtas{
+  display:grid;
+  gap:10px;
+  margin-top:6px;
+}
+#mobileMenu.techMenu .techMenuCtas .cta,
+#mobileMenu.techMenu .techMenuCtas .ghost{
+  width:100%;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px 14px;
+  border-radius:14px;
+}
+
+/* helper text */
+#mobileMenu.techMenu .techHint{
+  margin: 12px 0 0;
+  color: rgba(230,241,255,.72);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* remove double-close look: hide the header hamburger when menu open */
+body.menuOpen #hamburgerBtn{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.96);
+}
+
+/* prevent scrolling behind menu */
+body.menuOpen{ overflow:hidden; }
 
 /* Hero */
 .hero{padding:78px 0 38px;}
@@ -97,17 +250,6 @@ body{
 .h1{font-size:48px; line-height:1.03; margin:14px 0 12px;}
 .lead{color:var(--muted); font-size:16px; line-height:1.7; max-width:62ch;}
 .heroActions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-.ghost{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  padding:11px 14px;
-  border-radius:14px;
-  font-weight:800;
-  color:var(--text);
-  text-decoration:none;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.12);
-}
-.ghost:hover{background:rgba(255,255,255,.07)}
 
 .heroCard{
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -175,10 +317,7 @@ body{
 
 /* Portfolio */
 .workGrid{grid-template-columns:repeat(3, 1fr);}
-.work{
-  position:relative;
-  overflow:hidden;
-}
+.work{ position:relative; overflow:hidden; }
 .mock{
   height:150px;
   border-radius:16px;
@@ -192,7 +331,15 @@ body{
 .work small{color:var(--muted); font-weight:700}
 .work a{color:var(--text)}
 .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-.tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:var(--muted); font-weight:700}
+.tag{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+  font-weight:700
+}
 
 /* Form */
 .formGrid{grid-template-columns:1fr 1fr;}
@@ -207,7 +354,10 @@ input, select, textarea{
   outline:none;
 }
 textarea{min-height:140px; resize:vertical}
-input:focus, select:focus, textarea:focus{border-color: rgba(0,194,255,.45); box-shadow: 0 0 0 4px rgba(0,194,255,.12)}
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(0,194,255,.45);
+  box-shadow: 0 0 0 4px rgba(0,194,255,.12)
+}
 .help{margin-top:10px; color:var(--muted); font-size:13px; line-height:1.6}
 
 /* Footer */
@@ -239,193 +389,9 @@ input:focus, select:focus, textarea:focus{border-color: rgba(0,194,255,.45); box
 @media (max-width: 760px){
   .navlinks{display:none}
   .menuBtn{display:inline-flex}
-  .menuPanel{display:none}
   .h1{font-size:40px}
 }
 
-/* ================================
-   HIGH-TECH MOBILE MENU (CLEAN)
-   Uses your existing: .topbar .nav .navlinks .menuPanel
-   Works with your HTML: .menuPanel.techMenu + .hamburger spans
-================================ */
-
-/* Hide the old simple dropdown behavior */
-.menuPanel { display:none; padding:0; border-top:0; }
-
-/* Hamburger button styling (your HTML uses: button.menuBtn.hamburger with 3 spans) */
-.hamburger{
-  display:none;
-  width:46px;
-  height:46px;
-  border-radius:16px;
-  border:1px solid rgba(0,255,204,.22);
-  background:rgba(255,255,255,.06);
-  cursor:pointer;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  flex-direction:column;
-}
-.hamburger span{
-  width:22px;
-  height:3px;
-  border-radius:999px;
-  background:#00ffcc;
-  transition:transform .25s ease, opacity .25s ease;
-}
-.hamburger.active span:nth-child(1){
-  transform:translateY(7px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2){
-  opacity:0;
-}
-.hamburger.active span:nth-child(3){
-  transform:translateY(-7px) rotate(-45deg);
-}
-
-/* Fullscreen overlay panel */
-.menuPanel.techMenu{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:none;                 /* closed */
-  align-items:center;           /* ✅ centers vertically */
-  justify-content:center;       /* ✅ centers horizontally */
-  padding:18px;
-  background:rgba(3,7,12,.92);
-  backdrop-filter:blur(14px);
-}
-
-/* Open state controlled by your JS: data-open="true" */
-.menuPanel.techMenu[data-open="true"]{
-  display:flex;
-}
-
-/* Modal container */
-.techMenuInner{
-  width:min(520px, 92vw);
-  max-height:85vh;              /* ✅ prevents cutoff on short screens */
-  overflow:auto;                /* ✅ scroll inside if needed */
-  border-radius:22px;
-  padding:22px;
-  margin:0 auto;                /* ✅ no top pushing */
-  background:linear-gradient(180deg, rgba(10,20,35,.95), rgba(2,6,12,.95));
-  border:1px solid rgba(0,255,204,.22);
-  box-shadow:0 20px 80px rgba(0,0,0,.6);
-}
-
-/* Top row */
-.techMenuTop{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  margin-bottom:18px;
-}
-.techBrand img{ height:44px; }
-.techClose{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  border:1px solid rgba(0,255,204,.22);
-  background:rgba(255,255,255,.06);
-  color:#e6f1ff;
-  font-size:18px;
-  cursor:pointer;
-}
-
-/* Links */
-.techLinks{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  margin:10px 0 18px;
-}
-.techLinks a{
-  display:block;
-  padding:14px 16px;
-  border-radius:16px;
-  text-decoration:none;
-  color:#e6f1ff;
-  font-weight:700;
-  letter-spacing:.2px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-}
-.techLinks a:hover{
-  border-color:rgba(0,255,204,.30);
-  box-shadow:0 0 0 4px rgba(0,255,204,.10);
-}
-
-/* CTA buttons inside menu */
-.techMenuCtas{
-  display:grid;
-  gap:12px;
-  margin-top:6px;
-}
-.techMenuCtas .cta,
-.techMenuCtas .ghost{
-  width:100%;
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* Helper text */
-.techHint{
-  margin:14px 0 0;
-  color:rgba(230,241,255,.72);
-  font-size:13px;
-  text-align:center;
-}
-
-/* Disable page scrolling when menu open (your JS adds body.menuOpen) */
-body.menuOpen{ overflow:hidden; }
-
-/* Mobile behavior */
-@media (max-width:760px){
-  .navlinks{ display:none; }
-  .menuBtn{ display:inline-flex; } /* your button has both menuBtn + hamburger */
-  .hamburger{ display:inline-flex; }
-}
-/* ===== HARD OVERRIDE: Center the tech menu no matter what ===== */
-#mobileMenu.techMenu{
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  inset: auto !important;
-  z-index: 99999 !important;
-
-  /* always full overlay */
-  background: rgba(3,7,12,.92) !important;
-  backdrop-filter: blur(14px) !important;
-
-  /* default closed */
-  display: none !important;
-  padding: 18px !important;
-}
-
-/* OPEN: force GRID so centering always works */
-#mobileMenu.techMenu[data-open="true"]{
-  display: grid !important;
-  place-items: center !important;
-}
-
-/* Inner modal box positioning */
-#mobileMenu.techMenu .techMenuInner{
-  margin: 0 !important;
-  width: min(520px, 92vw) !important;
-  max-height: calc(100vh - 110px) !important; /* prevents top cut-off */
-  overflow: auto !important;
-
-  border-radius: 22px !important;
-  padding: 22px !important;
-  background: linear-gradient(180deg, rgba(10,20,35,.95), rgba(2,6,12,.95)) !important;
-  border: 1px solid rgba(0,255,204,.22) !important;
-  box-shadow: 0 20px 80px rgba(0,0,0,.6) !important;
-}
 
 /* Keep page from scrolling behind menu */
 body.menuOpen { overflow: hidden !important; }
