@@ -23,14 +23,47 @@
           <a data-nav href="consultation.html">Consultation</a>
         </div>
 
-        <button class="menuBtn" data-menu-btn aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+        <!-- High-tech Hamburger Button -->
+        <button
+          class="menuBtn hamburger"
+          id="hamburgerBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
 
-      <div id="mobileMenu" class="menuPanel" data-menu-panel data-open="false">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="services.html">Services</a>
-        <a data-nav href="portfolio.html">Portfolio</a>
-        <a data-nav href="consultation.html">Consultation</a>
+      <!-- High-tech Mobile Menu Panel -->
+      <div id="mobileMenu" class="menuPanel techMenu" data-open="false" aria-hidden="true">
+        <div class="techMenuInner">
+          <div class="techMenuTop">
+            <a class="techBrand" href="index.html">
+              <img src="BWP Main Logo.png" alt="Build with Palmetto logo" />
+            </a>
+            <button class="techClose" id="closeMenuBtn" type="button" aria-label="Close menu">
+              ✕
+            </button>
+          </div>
+
+          <div class="techLinks">
+            <a data-nav href="index.html">Home</a>
+            <a data-nav href="services.html">Services</a>
+            <a data-nav href="portfolio.html">Portfolio</a>
+            <a data-nav href="consultation.html">Consultation</a>
+          </div>
+
+          <div class="techMenuCtas">
+            <a class="cta" href="consultation.html">Request a Consultation</a>
+            <a class="ghost" href="https://www.thumbtack.com" target="_blank" rel="noopener">Find Me on Thumbtack</a>
+          </div>
+
+          <p class="techHint">Modern websites & branding for service-based businesses.</p>
+        </div>
       </div>
     </div>
   </header>
@@ -49,7 +82,7 @@
         <div class="grid featureGrid">
           <div class="card">
             <h3>Website Design & Build</h3>
-            <p>Custom websites designed for service businesses. We focus on clarity, strong call‑to‑actions, and mobile-first layouts.</p>
+            <p>Custom websites designed for service businesses. We focus on clarity, strong call-to-actions, and mobile-first layouts.</p>
             <div class="tags">
               <span class="tag">Mobile-first</span>
               <span class="tag">Fast loading</span>
@@ -130,6 +163,51 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // High-tech hamburger menu toggle (HTML-only drop-in)
+    const btn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeMenuBtn');
+    const panel = document.getElementById('mobileMenu');
+
+    function openMenu() {
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('data-open', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menuOpen');
+    }
+
+    function closeMenu() {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('data-open', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menuOpen');
+    }
+
+    btn.addEventListener('click', () => {
+      const isOpen = panel.getAttribute('data-open') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close when clicking any link in the panel
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close if user taps outside inner menu (panel background)
+    panel.addEventListener('click', (e) => {
+      if (e.target === panel) closeMenu();
+    });
+  </script>
 </body>
 </html>
