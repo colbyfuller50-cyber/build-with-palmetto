@@ -10,64 +10,69 @@
 </head>
 <body>
   <header class="topbar">
-  <div class="container">
-    <nav class="nav" aria-label="Primary">
-      <a class="brand" href="index.html">
-        <img src="BWP Main Logo 1.png" alt="Build with Palmetto logo" />
-      </a>
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <img src="BWP Main Logo 1.png" alt="Build with Palmetto logo" />
+        </a>
 
-      <div class="navlinks">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="services.html">Services</a>
-        <a data-nav href="portfolio.html">Portfolio</a>
-        <a data-nav href="consultation.html">Consultation</a>
-      </div>
-
-      <!-- High-tech Hamburger Button -->
-      <button
-        class="menuBtn hamburger"
-        id="hamburgerBtn"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-        type="button"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-
-    <!-- High-tech Mobile Menu Panel -->
-    <div id="mobileMenu" class="menuPanel techMenu" data-open="false" aria-hidden="true">
-      <div class="techMenuInner">
-        <div class="techMenuTop">
-          <a class="techBrand" href="index.html">
-            <img src="BWP Main Logo 1.png" alt="Build with Palmetto logo" />
-          </a>
-          <button class="techClose" id="closeMenuBtn" type="button" aria-label="Close menu">
-            ✕
-          </button>
-        </div>
-
-        <div class="techLinks">
+        <div class="navlinks">
           <a data-nav href="index.html">Home</a>
           <a data-nav href="services.html">Services</a>
           <a data-nav href="portfolio.html">Portfolio</a>
           <a data-nav href="consultation.html">Consultation</a>
         </div>
 
-        <div class="techMenuCtas">
-          <a class="cta" href="https://www.thumbtack.com/sc/columbia/web-design/palmetto-digital/service/569354673571774467?utm_medium=web&utm_source=txt&surface=sp&referrer_pk=567021525351555082">Find Me on Thumbtack</a>
-          </a>
-        </div>
+        <!-- High-tech Hamburger Button -->
+        <button
+          class="menuBtn hamburger"
+          id="hamburgerBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
 
-        <p class="techHint">Modern websites & branding for service-based businesses.</p>
+      <!-- High-tech Mobile Menu Panel -->
+      <div id="mobileMenu" class="menuPanel techMenu" data-open="false" aria-hidden="true">
+        <div class="techMenuInner">
+          <div class="techMenuTop">
+            <a class="techBrand" href="index.html">
+              <img src="BWP Main Logo 1.png" alt="Build with Palmetto logo" />
+            </a>
+            <button class="techClose" id="closeMenuBtn" type="button" aria-label="Close menu">
+              ✕
+            </button>
+          </div>
+
+          <div class="techLinks">
+            <a data-nav href="index.html">Home</a>
+            <a data-nav href="services.html">Services</a>
+            <a data-nav href="portfolio.html">Portfolio</a>
+            <a data-nav href="consultation.html">Consultation</a>
+          </div>
+
+          <div class="techMenuCtas">
+            <a
+              class="cta"
+              href="https://www.thumbtack.com/sc/columbia/web-design/palmetto-digital/service/569354673571774467?utm_medium=web&utm_source=txt&surface=sp&referrer_pk=567021525351555082"
+              target="_blank"
+              rel="noopener"
+            >
+              Find Me on Thumbtack
+            </a>
+          </div>
+
+          <p class="techHint">Modern websites & branding for service-based businesses.</p>
+        </div>
       </div>
     </div>
-  </div>
-</header>
-
+  </header>
 
   <main>
     <section class="pageHead">
@@ -80,18 +85,20 @@
 
     <section class="section" style="padding-top:26px;">
       <div class="container">
-        <div class="grid" style="grid-template-columns: 1.05fr .95fr; gap:18px; align-items:start;">
+
+        <!-- ✅ STACKED LAYOUT: Form first, "What happens next" below -->
+        <div class="grid" style="grid-template-columns: 1fr; gap:18px; align-items:start;">
+
+          <!-- FORM CARD -->
           <div class="card">
             <h3 style="margin:0 0 12px;">Consultation Form</h3>
 
             <!--
               IMPORTANT:
-              This form is set up to work locally, but to receive submissions you must connect it to a form service.
-              Easiest options:
+              To receive submissions you must connect it to a form service.
               - Formspree: https://formspree.io (replace action URL)
               - Getform: https://getform.io
               - Netlify Forms (if hosting on Netlify)
-
               Replace the action value below with your endpoint.
             -->
             <form action="#" method="post" onsubmit="return handleSubmit(event)">
@@ -153,13 +160,25 @@
             </form>
           </div>
 
+          <!-- ✅ "WHAT HAPPENS NEXT" BELOW THE FORM -->
           <aside class="card">
             <h3 style="margin:0 0 8px;">What happens next</h3>
             <p>After you submit the form, we’ll review your request and reach out with questions, timeline, and pricing options.</p>
+
             <div class="hr"></div>
+
             <h3 style="margin:0 0 8px;">Also on Thumbtack</h3>
             <p>If you prefer, you can hire us through Thumbtack as well. Either way, we’ll help you build something modern, clean, and client-ready.</p>
+<a
+              class="cta"
+              href="https://www.thumbtack.com/sc/columbia/web-design/palmetto-digital/service/569354673571774467?utm_medium=web&utm_source=txt&surface=sp&referrer_pk=567021525351555082"
+              target="_blank"
+              rel="noopener"
+            >
+              Find Me on Thumbtack
+            </a>
             <div class="hr"></div>
+
             <h3 style="margin:0 0 8px;">What to include</h3>
             <div class="tags">
               <span class="tag">Your services</span>
@@ -168,6 +187,7 @@
               <span class="tag">Logos/colors</span>
             </div>
           </aside>
+
         </div>
       </div>
     </section>
@@ -190,52 +210,50 @@
       </div>
     </div>
   </footer>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  const btn = document.getElementById('hamburgerBtn');
-  const closeBtn = document.getElementById('closeMenuBtn');
-  const panel = document.getElementById('mobileMenu');
-
-  function openMenu() {
-    btn.classList.add('active');
-    btn.setAttribute('aria-expanded', 'true');
-    panel.setAttribute('data-open', 'true');
-    panel.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('menuOpen');
-  }
-
-  function closeMenu() {
-    btn.classList.remove('active');
-    btn.setAttribute('aria-expanded', 'false');
-    panel.setAttribute('data-open', 'false');
-    panel.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menuOpen');
-  }
-
-  btn.addEventListener('click', () => {
-    const isOpen = panel.getAttribute('data-open') === 'true';
-    isOpen ? closeMenu() : openMenu();
-  });
-
-  closeBtn.addEventListener('click', closeMenu);
-
-  panel.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', closeMenu)
-  );
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  panel.addEventListener('click', e => {
-    if (e.target === panel) closeMenu();
-  });
-</script>
-
-  <script src="main.js"></script>
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // High-tech hamburger menu toggle
+    const btn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeMenuBtn');
+    const panel = document.getElementById('mobileMenu');
+
+    function openMenu() {
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('data-open', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menuOpen');
+    }
+
+    function closeMenu() {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('data-open', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menuOpen');
+    }
+
+    btn.addEventListener('click', () => {
+      const isOpen = panel.getAttribute('data-open') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+
+    panel.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', closeMenu)
+    );
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    panel.addEventListener('click', e => {
+      if (e.target === panel) closeMenu();
+    });
 
     function handleSubmit(e){
       e.preventDefault();
@@ -243,5 +261,7 @@
       return false;
     }
   </script>
+
+  <script src="main.js"></script>
 </body>
 </html>
