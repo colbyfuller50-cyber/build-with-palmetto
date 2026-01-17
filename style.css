@@ -388,3 +388,44 @@ body.menuOpen{ overflow:hidden; }
   .menuBtn{ display:inline-flex; } /* your button has both menuBtn + hamburger */
   .hamburger{ display:inline-flex; }
 }
+/* ===== HARD OVERRIDE: Center the tech menu no matter what ===== */
+#mobileMenu.techMenu{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  inset: auto !important;
+  z-index: 99999 !important;
+
+  /* always full overlay */
+  background: rgba(3,7,12,.92) !important;
+  backdrop-filter: blur(14px) !important;
+
+  /* default closed */
+  display: none !important;
+  padding: 18px !important;
+}
+
+/* OPEN: force GRID so centering always works */
+#mobileMenu.techMenu[data-open="true"]{
+  display: grid !important;
+  place-items: center !important;
+}
+
+/* Inner modal box positioning */
+#mobileMenu.techMenu .techMenuInner{
+  margin: 0 !important;
+  width: min(520px, 92vw) !important;
+  max-height: calc(100vh - 110px) !important; /* prevents top cut-off */
+  overflow: auto !important;
+
+  border-radius: 22px !important;
+  padding: 22px !important;
+  background: linear-gradient(180deg, rgba(10,20,35,.95), rgba(2,6,12,.95)) !important;
+  border: 1px solid rgba(0,255,204,.22) !important;
+  box-shadow: 0 20px 80px rgba(0,0,0,.6) !important;
+}
+
+/* Keep page from scrolling behind menu */
+body.menuOpen { overflow: hidden !important; }
