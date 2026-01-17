@@ -243,299 +243,148 @@ input:focus, select:focus, textarea:focus{border-color: rgba(0,194,255,.45); box
   .h1{font-size:40px}
 }
 
-/* HEADER */
-.site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(5, 15, 25, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+/* ================================
+   HIGH-TECH MOBILE MENU (CLEAN)
+   Uses your existing: .topbar .nav .navlinks .menuPanel
+   Works with your HTML: .menuPanel.techMenu + .hamburger spans
+================================ */
+
+/* Hide the old simple dropdown behavior */
+.menuPanel { display:none; padding:0; border-top:0; }
+
+/* Hamburger button styling (your HTML uses: button.menuBtn.hamburger with 3 spans) */
+.hamburger{
+  display:none;
+  width:46px;
+  height:46px;
+  border-radius:16px;
+  border:1px solid rgba(0,255,204,.22);
+  background:rgba(255,255,255,.06);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex-direction:column;
+}
+.hamburger span{
+  width:22px;
+  height:3px;
+  border-radius:999px;
+  background:#00ffcc;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.hamburger.active span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 24px;
+/* Fullscreen overlay panel */
+.menuPanel.techMenu{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;                 /* closed */
+  align-items:center;           /* ✅ centers vertically */
+  justify-content:center;       /* ✅ centers horizontally */
+  padding:18px;
+  background:rgba(3,7,12,.92);
+  backdrop-filter:blur(14px);
 }
 
-.logo img {
-  height: 44px;
+/* Open state controlled by your JS: data-open="true" */
+.menuPanel.techMenu[data-open="true"]{
+  display:flex;
 }
 
-/* DESKTOP NAV */
-.nav-links {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-links a {
-  color: #e6f1ff;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #00c6ff, #00ff99);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links .cta {
-  padding: 8px 18px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #00c6ff, #00ff99);
-  color: #000;
-}
-
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: #00ffcc;
-  transition: 0.4s;
-  border-radius: 3px;
-}
-
-/* MOBILE MENU */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(180deg, #050f19, #02060c);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  transition: right 0.4s ease;
-}
-
-.mobile-menu a {
-  font-size: 1.6rem;
-  color: #e6f1ff;
-  text-decoration: none;
-}
-
-.mobile-menu .thumbtack {
-  margin-top: 20px;
-  padding: 12px 26px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #00c6ff, #00ff99);
-  color: #000;
-}
-
-/* ACTIVE STATES */
-.mobile-menu.active {
-  right: 0;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-}
-
-/* ===== Mobile Tech Menu Fix (make options visible) ===== */
-.menuPanel.techMenu {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: none;              /* hidden by default */
-  align-items: center;
-  justify-content: center;
-  background: rgba(3, 7, 12, 0.92);
-  backdrop-filter: blur(14px);
-  padding: 24px;
-}
-
-/* Open state */
-.menuPanel.techMenu[data-open="true"] {
-  display: flex;
-}
-
-/* Menu inner container */
-.techMenuInner {
-  width: min(520px, 92vw);
-  border-radius: 22px;
-  padding: 22px;
-  background: linear-gradient(180deg, rgba(10, 20, 35, 0.95), rgba(2, 6, 12, 0.95));
-  border: 1px solid rgba(0, 255, 204, 0.22);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+/* Modal container */
+.techMenuInner{
+  width:min(520px, 92vw);
+  max-height:85vh;              /* ✅ prevents cutoff on short screens */
+  overflow:auto;                /* ✅ scroll inside if needed */
+  border-radius:22px;
+  padding:22px;
+  margin:0 auto;                /* ✅ no top pushing */
+  background:linear-gradient(180deg, rgba(10,20,35,.95), rgba(2,6,12,.95));
+  border:1px solid rgba(0,255,204,.22);
+  box-shadow:0 20px 80px rgba(0,0,0,.6);
 }
 
 /* Top row */
-.techMenuTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 18px;
+.techMenuTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:18px;
 }
-
-.techBrand img {
-  height: 44px;
-}
-
-.techClose {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 255, 204, 0.22);
-  background: rgba(255,255,255,0.06);
-  color: #e6f1ff;
-  font-size: 18px;
-  cursor: pointer;
+.techBrand img{ height:44px; }
+.techClose{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(0,255,204,.22);
+  background:rgba(255,255,255,.06);
+  color:#e6f1ff;
+  font-size:18px;
+  cursor:pointer;
 }
 
 /* Links */
-.techLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: 10px 0 18px;
+.techLinks{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin:10px 0 18px;
+}
+.techLinks a{
+  display:block;
+  padding:14px 16px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#e6f1ff;
+  font-weight:700;
+  letter-spacing:.2px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+.techLinks a:hover{
+  border-color:rgba(0,255,204,.30);
+  box-shadow:0 0 0 4px rgba(0,255,204,.10);
 }
 
-.techLinks a {
-  display: block;
-  padding: 14px 16px;
-  border-radius: 16px;
-  text-decoration: none;
-  color: #e6f1ff;              /* IMPORTANT: makes text visible */
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
+/* CTA buttons inside menu */
+.techMenuCtas{
+  display:grid;
+  gap:12px;
+  margin-top:6px;
 }
-
-.techLinks a:hover {
-  border-color: rgba(0, 255, 204, 0.30);
-  box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.10);
-}
-
-/* CTAs */
-.techMenuCtas {
-  display: grid;
-  gap: 12px;
-  margin-top: 6px;
-}
-
-/* Force your buttons to show inside the menu */
 .techMenuCtas .cta,
-.techMenuCtas .ghost {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.techMenuCtas .ghost{
+  width:100%;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* Small helper text */
-.techHint {
-  margin: 14px 0 0;
-  color: rgba(230, 241, 255, 0.72);
-  font-size: 13px;
-  text-align: center;
+/* Helper text */
+.techHint{
+  margin:14px 0 0;
+  color:rgba(230,241,255,.72);
+  font-size:13px;
+  text-align:center;
 }
 
-/* Hamburger visibility on mobile */
-@media (max-width: 900px) {
-  .navlinks { display: none !important; }
-  .hamburger { display: inline-flex !important; }
-}
+/* Disable page scrolling when menu open (your JS adds body.menuOpen) */
+body.menuOpen{ overflow:hidden; }
 
-/* Optional: prevent scrolling when menu open */
-body.menuOpen {
-  overflow: hidden;
-}
-
-/* Hamburger icon styling (in case your CSS hides it) */
-.hamburger {
-  display: none;
-  width: 46px;
-  height: 46px;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 255, 204, 0.22);
-  background: rgba(255,255,255,0.06);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  flex-direction: column;
-}
-
-.hamburger span {
-  width: 22px;
-  height: 3px;
-  border-radius: 999px;
-  background: #00ffcc;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ===== FIX MOBILE MENU VERTICAL POSITION ===== */
-.menuPanel.techMenu {
-  align-items: center !important;
-  justify-content: center !important;
-  padding-top: 0 !important;
-}
-
-/* Ensure inner menu is centered and not pushed up */
-.techMenuInner {
-  margin: 0 auto !important;
-  transform: none !important;
-}
-
-/* If you want it SLIGHTLY lower (more premium feel) */
-@media (max-width: 900px) {
-  .techMenuInner {
-    margin-top: 6vh !important; /* adjust between 4–10vh if desired */
-  }
+/* Mobile behavior */
+@media (max-width:760px){
+  .navlinks{ display:none; }
+  .menuBtn{ display:inline-flex; } /* your button has both menuBtn + hamburger */
+  .hamburger{ display:inline-flex; }
 }
