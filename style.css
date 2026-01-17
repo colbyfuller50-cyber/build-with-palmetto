@@ -372,3 +372,150 @@ input:focus, select:focus, textarea:focus{border-color: rgba(0,194,255,.45); box
     display: flex;
   }
 }
+
+/* ===== Mobile Tech Menu Fix (make options visible) ===== */
+.menuPanel.techMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;              /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 7, 12, 0.92);
+  backdrop-filter: blur(14px);
+  padding: 24px;
+}
+
+/* Open state */
+.menuPanel.techMenu[data-open="true"] {
+  display: flex;
+}
+
+/* Menu inner container */
+.techMenuInner {
+  width: min(520px, 92vw);
+  border-radius: 22px;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(10, 20, 35, 0.95), rgba(2, 6, 12, 0.95));
+  border: 1px solid rgba(0, 255, 204, 0.22);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* Top row */
+.techMenuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.techBrand img {
+  height: 44px;
+}
+
+.techClose {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 255, 204, 0.22);
+  background: rgba(255,255,255,0.06);
+  color: #e6f1ff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Links */
+.techLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 10px 0 18px;
+}
+
+.techLinks a {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #e6f1ff;              /* IMPORTANT: makes text visible */
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.techLinks a:hover {
+  border-color: rgba(0, 255, 204, 0.30);
+  box-shadow: 0 0 0 4px rgba(0, 255, 204, 0.10);
+}
+
+/* CTAs */
+.techMenuCtas {
+  display: grid;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* Force your buttons to show inside the menu */
+.techMenuCtas .cta,
+.techMenuCtas .ghost {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Small helper text */
+.techHint {
+  margin: 14px 0 0;
+  color: rgba(230, 241, 255, 0.72);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Hamburger visibility on mobile */
+@media (max-width: 900px) {
+  .navlinks { display: none !important; }
+  .hamburger { display: inline-flex !important; }
+}
+
+/* Optional: prevent scrolling when menu open */
+body.menuOpen {
+  overflow: hidden;
+}
+
+/* Hamburger icon styling (in case your CSS hides it) */
+.hamburger {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 204, 0.22);
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-direction: column;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: #00ffcc;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
